@@ -20,6 +20,9 @@
 		5E502E9C1A5ECB6D00C89ACE /* GGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E502E9B1A5ECB6D00C89ACE /* GGraphView.m */; };
 		5E502EA01A5ECE4200C89ACE /* UIBezierPath+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E502E9F1A5ECE4200C89ACE /* UIBezierPath+Image.m */; };
 		5E502EA31A5F12B800C89ACE /* 7.7.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E502EA21A5F12B800C89ACE /* 7.7.json */; };
+		5E502EA51A5F2E6E00C89ACE /* 8.7.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E502EA41A5F2E6E00C89ACE /* 8.7.json */; };
+		5E502EA81A5F314900C89ACE /* GOrientedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E502EA71A5F314900C89ACE /* GOrientedGraph.m */; };
+		5E502EAC1A5F378900C89ACE /* GDjikstraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E502EAB1A5F378900C89ACE /* GDjikstraViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,11 @@
 		5E502E9E1A5ECE4200C89ACE /* UIBezierPath+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Image.h"; sourceTree = "<group>"; };
 		5E502E9F1A5ECE4200C89ACE /* UIBezierPath+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Image.m"; sourceTree = "<group>"; };
 		5E502EA21A5F12B800C89ACE /* 7.7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 7.7.json; sourceTree = "<group>"; };
+		5E502EA41A5F2E6E00C89ACE /* 8.7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 8.7.json; sourceTree = "<group>"; };
+		5E502EA61A5F314900C89ACE /* GOrientedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOrientedGraph.h; sourceTree = "<group>"; };
+		5E502EA71A5F314900C89ACE /* GOrientedGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOrientedGraph.m; sourceTree = "<group>"; };
+		5E502EAA1A5F378900C89ACE /* GDjikstraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDjikstraViewController.h; sourceTree = "<group>"; };
+		5E502EAB1A5F378900C89ACE /* GDjikstraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDjikstraViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +107,9 @@
 			isa = PBXGroup;
 			children = (
 				5E502E9D1A5ECE2B00C89ACE /* Utils */,
-				5E502E991A5ECB3000C89ACE /* Views */,
 				5E502E8F1A5EC94B00C89ACE /* Model */,
-				5E502E6D1A5EC6DB00C89ACE /* AppDelegate.h */,
-				5E502E6E1A5EC6DB00C89ACE /* AppDelegate.m */,
-				5E502E701A5EC6DB00C89ACE /* ViewController.h */,
-				5E502E711A5EC6DB00C89ACE /* ViewController.m */,
+				5E502E991A5ECB3000C89ACE /* Views */,
+				5E502EA91A5F373C00C89ACE /* Controllers */,
 				5E502EA11A5F12A100C89ACE /* Resources */,
 				5E502E691A5EC6DB00C89ACE /* Supporting Files */,
 			);
@@ -114,6 +119,8 @@
 		5E502E691A5EC6DB00C89ACE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5E502E6D1A5EC6DB00C89ACE /* AppDelegate.h */,
+				5E502E6E1A5EC6DB00C89ACE /* AppDelegate.m */,
 				5E502E6A1A5EC6DB00C89ACE /* Info.plist */,
 				5E502E6B1A5EC6DB00C89ACE /* main.m */,
 			);
@@ -146,6 +153,8 @@
 				5E502E941A5EC99C00C89ACE /* GVertex.m */,
 				5E502E961A5EC9AB00C89ACE /* GEdge.h */,
 				5E502E971A5EC9AB00C89ACE /* GEdge.m */,
+				5E502EA61A5F314900C89ACE /* GOrientedGraph.h */,
+				5E502EA71A5F314900C89ACE /* GOrientedGraph.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -171,12 +180,24 @@
 		5E502EA11A5F12A100C89ACE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5E502EA41A5F2E6E00C89ACE /* 8.7.json */,
 				5E502EA21A5F12B800C89ACE /* 7.7.json */,
 				5E502E731A5EC6DB00C89ACE /* Main.storyboard */,
 				5E502E761A5EC6DB00C89ACE /* Images.xcassets */,
 				5E502E781A5EC6DB00C89ACE /* LaunchScreen.xib */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		5E502EA91A5F373C00C89ACE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5E502E701A5EC6DB00C89ACE /* ViewController.h */,
+				5E502E711A5EC6DB00C89ACE /* ViewController.m */,
+				5E502EAA1A5F378900C89ACE /* GDjikstraViewController.h */,
+				5E502EAB1A5F378900C89ACE /* GDjikstraViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +284,7 @@
 				5E502E751A5EC6DB00C89ACE /* Main.storyboard in Resources */,
 				5E502E7A1A5EC6DB00C89ACE /* LaunchScreen.xib in Resources */,
 				5E502E771A5EC6DB00C89ACE /* Images.xcassets in Resources */,
+				5E502EA51A5F2E6E00C89ACE /* 8.7.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +308,9 @@
 				5E502E721A5EC6DB00C89ACE /* ViewController.m in Sources */,
 				5E502E6F1A5EC6DB00C89ACE /* AppDelegate.m in Sources */,
 				5E502E951A5EC99C00C89ACE /* GVertex.m in Sources */,
+				5E502EAC1A5F378900C89ACE /* GDjikstraViewController.m in Sources */,
 				5E502E6C1A5EC6DB00C89ACE /* main.m in Sources */,
+				5E502EA81A5F314900C89ACE /* GOrientedGraph.m in Sources */,
 				5E502E9C1A5ECB6D00C89ACE /* GGraphView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

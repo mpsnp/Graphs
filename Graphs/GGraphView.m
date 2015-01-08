@@ -8,6 +8,7 @@
 
 #import "GGraphView.h"
 #import "GGraph.h"
+#import "GOrientedGraph.h"
 #import "GVertex.h"
 #import "GEdge.h"
 #import "UIBezierPath+Image.h"
@@ -22,6 +23,7 @@
     self.lineColor = [UIColor blackColor];
     self.lineWidth = 1;
     self.pointSize = 10;
+    self.arrowLength = self.pointSize * 2;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     [self addGestureRecognizer:tap];
@@ -105,6 +107,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
+    BOOL oriented = [self.graph isMemberOfClass:[GOrientedGraph class]];
     if (self.graph)
     {
         for (GEdge *edge in self.graph.edges)
@@ -115,6 +118,21 @@
             [path addLineToPoint:[self fromNormalizedCoord:edge.v2.position]];
             [edge.color ? edge.color : self.lineColor setStroke];
             [path stroke];
+            
+            if (oriented)
+            {
+                CGPoint arrowVector = [self subFrom:[self fromNormalizedCoord:edge.v1.position] p2:[self fromNormalizedCoord:edge.v2.position]];
+                double length = sqrt([self doubleNorm:arrowVector]);
+                arrowVector = CGPointMake(arrowVector.x / length * self.arrowLength, arrowVector.y / length * self.arrowLength);
+                path = [UIBezierPath bezierPath];
+                [path moveToPoint:[self fromNormalizedCoord:edge.v2.position]];
+                [path addLineToPoint:[self add:[self fromNormalizedCoord:edge.v2.position] to:arrowVector]];
+                [path setLineCapStyle:kCGLineCapRound];
+                [self.lineColor setStroke];
+                [path setLineWidth:self.lineWidth * 2.5];
+                [path stroke];
+            }
+            
             CGPoint textOrigin = [self add:[self fromNormalizedCoord:edge.v1.position] to:[self fromNormalizedCoord:edge.v2.position]];
             textOrigin = CGPointMake(textOrigin.x * 0.5, textOrigin.y * 0.5);
             path = [UIBezierPath bezierPathWithArcCenter:textOrigin radius:self.pointSize * 0.8 startAngle:0 endAngle:M_PI * 2 clockwise:YES];

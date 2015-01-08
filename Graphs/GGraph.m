@@ -76,9 +76,9 @@
     return result;
 }
 
-+ (GGraph *)graphWithData:(NSData *)data
++ (instancetype)graphWithData:(NSData *)data
 {
-    GGraph *graph = [GGraph new];
+    GGraph *graph = [self new];
     
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     

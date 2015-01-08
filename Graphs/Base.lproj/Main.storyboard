@@ -33,11 +33,22 @@
                                             <segue destination="BYZ-38-t0r" kind="show" id="BBg-qW-Qax"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Iuq-OT-KP1">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="AdX-1E-WSL" style="IBUITableViewCellStyleDefault" id="Iuq-OT-KP1">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Iuq-OT-KP1" id="IYi-Yc-bHj">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Дерево кратчайших путей" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AdX-1E-WSL">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="0Cb-eS-oWU" kind="show" id="6cE-5e-yAc"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="xEa-7E-jrV">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -124,6 +135,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1116" y="462"/>
+        </scene>
+        <!--Дерево кратчайших путей-->
+        <scene sceneID="cT3-DW-nxi">
+            <objects>
+                <viewController id="0Cb-eS-oWU" customClass="GDjikstraViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oir-MH-Gb4"/>
+                        <viewControllerLayoutGuide type="bottom" id="8qK-RJ-tt5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="redraw" id="foV-G4-eXK" customClass="GGraphView">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Y8i-dZ-kWR" customClass="GGraphView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="1" green="0.0" blue="0.054199093339999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="pointSize">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="topGraphChanged:" destination="0Cb-eS-oWU" eventType="valueChanged" id="nwr-Wy-M5n"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8qK-RJ-tt5" firstAttribute="top" secondItem="Y8i-dZ-kWR" secondAttribute="bottom" id="6Z6-kW-hgK"/>
+                            <constraint firstItem="Y8i-dZ-kWR" firstAttribute="top" secondItem="foV-G4-eXK" secondAttribute="topMargin" id="RVi-Ra-PAU"/>
+                            <constraint firstItem="Y8i-dZ-kWR" firstAttribute="leading" secondItem="foV-G4-eXK" secondAttribute="leading" id="a0X-Ww-uc3"/>
+                            <constraint firstAttribute="trailing" secondItem="Y8i-dZ-kWR" secondAttribute="trailing" id="q0I-OU-0kO"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="pointSize">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <navigationItem key="navigationItem" title="Дерево кратчайших путей" id="dbh-7T-24j"/>
+                    <connections>
+                        <outlet property="minimalGraphView" destination="Y8i-dZ-kWR" id="P40-Zs-6iD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k4H-Hi-IeU" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1126" y="1214"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="d2Z-hD-P0E">

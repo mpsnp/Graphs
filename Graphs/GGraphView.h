@@ -14,6 +14,7 @@
 @property (nonatomic, weak) GGraph *graph;
 @property (nonatomic) IBInspectable double pointSize;
 @property (nonatomic) IBInspectable double lineWidth;
+@property (nonatomic) IBInspectable double arrowLength;
 @property (nonatomic, strong) IBInspectable UIColor *lineColor;
 @property (nonatomic, strong) IBInspectable UIColor *fillColor;
 @end
