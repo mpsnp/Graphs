@@ -23,6 +23,8 @@
 		5E502EA51A5F2E6E00C89ACE /* 8.7.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E502EA41A5F2E6E00C89ACE /* 8.7.json */; };
 		5E502EA81A5F314900C89ACE /* GOrientedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E502EA71A5F314900C89ACE /* GOrientedGraph.m */; };
 		5E502EAC1A5F378900C89ACE /* GDjikstraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E502EAB1A5F378900C89ACE /* GDjikstraViewController.m */; };
+		5E69D4BD1A5F58C100EBCBA2 /* GFloydViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E69D4BC1A5F58C100EBCBA2 /* GFloydViewController.m */; };
+		8E1A3B4DD8327F858159D8ED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A46588903348361500D0C0B /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A46588903348361500D0C0B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E502E661A5EC6DB00C89ACE /* Graphs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Graphs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E502E6A1A5EC6DB00C89ACE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E502E6B1A5EC6DB00C89ACE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -65,6 +68,10 @@
 		5E502EA71A5F314900C89ACE /* GOrientedGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOrientedGraph.m; sourceTree = "<group>"; };
 		5E502EAA1A5F378900C89ACE /* GDjikstraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDjikstraViewController.h; sourceTree = "<group>"; };
 		5E502EAB1A5F378900C89ACE /* GDjikstraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDjikstraViewController.m; sourceTree = "<group>"; };
+		5E69D4BB1A5F58C100EBCBA2 /* GFloydViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFloydViewController.h; sourceTree = "<group>"; };
+		5E69D4BC1A5F58C100EBCBA2 /* GFloydViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFloydViewController.m; sourceTree = "<group>"; };
+		8F240637BD2C31A276C1F7B9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		DC1708F770B721A12BC1D805 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E1A3B4DD8327F858159D8ED /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,12 +93,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D35BE5B62CBC19284514C0D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A46588903348361500D0C0B /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3FBF6D8223DE55A4A0C6F8CF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DC1708F770B721A12BC1D805 /* Pods.debug.xcconfig */,
+				8F240637BD2C31A276C1F7B9 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		5E502E5D1A5EC6DB00C89ACE = {
 			isa = PBXGroup;
 			children = (
 				5E502E681A5EC6DB00C89ACE /* Graphs */,
 				5E502E821A5EC6DB00C89ACE /* GraphsTests */,
 				5E502E671A5EC6DB00C89ACE /* Products */,
+				3FBF6D8223DE55A4A0C6F8CF /* Pods */,
+				0D35BE5B62CBC19284514C0D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -196,6 +223,8 @@
 				5E502E711A5EC6DB00C89ACE /* ViewController.m */,
 				5E502EAA1A5F378900C89ACE /* GDjikstraViewController.h */,
 				5E502EAB1A5F378900C89ACE /* GDjikstraViewController.m */,
+				5E69D4BB1A5F58C100EBCBA2 /* GFloydViewController.h */,
+				5E69D4BC1A5F58C100EBCBA2 /* GFloydViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -207,9 +236,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E502E891A5EC6DB00C89ACE /* Build configuration list for PBXNativeTarget "Graphs" */;
 			buildPhases = (
+				09A9C11F5EFE809D84D2AAAC /* Check Pods Manifest.lock */,
 				5E502E621A5EC6DB00C89ACE /* Sources */,
 				5E502E631A5EC6DB00C89ACE /* Frameworks */,
 				5E502E641A5EC6DB00C89ACE /* Resources */,
+				7E9B7FB61022608C988F778E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -297,6 +328,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		09A9C11F5EFE809D84D2AAAC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7E9B7FB61022608C988F778E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5E502E621A5EC6DB00C89ACE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -312,6 +376,7 @@
 				5E502E6C1A5EC6DB00C89ACE /* main.m in Sources */,
 				5E502EA81A5F314900C89ACE /* GOrientedGraph.m in Sources */,
 				5E502E9C1A5ECB6D00C89ACE /* GGraphView.m in Sources */,
+				5E69D4BD1A5F58C100EBCBA2 /* GFloydViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +498,7 @@
 		};
 		5E502E8A1A5EC6DB00C89ACE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC1708F770B721A12BC1D805 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Graphs/Info.plist;
@@ -443,6 +509,7 @@
 		};
 		5E502E8B1A5EC6DB00C89ACE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F240637BD2C31A276C1F7B9 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Graphs/Info.plist;

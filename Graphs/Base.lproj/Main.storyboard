@@ -50,11 +50,22 @@
                                             <segue destination="0Cb-eS-oWU" kind="show" id="6cE-5e-yAc"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="xEa-7E-jrV">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="KCz-ya-doP" style="IBUITableViewCellStyleDefault" id="xEa-7E-jrV">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xEa-7E-jrV" id="JcL-Uu-ERT">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Матрица длин кратчайших путей" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KCz-ya-doP">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="GDF-L3-BAn" kind="show" id="enf-Ei-KYJ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -135,6 +146,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1116" y="462"/>
+        </scene>
+        <!--Floyd View Controller-->
+        <scene sceneID="nfU-Sl-cI5">
+            <objects>
+                <viewController id="GDF-L3-BAn" customClass="GFloydViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z8c-1U-18K"/>
+                        <viewControllerLayoutGuide type="bottom" id="BKV-5z-tXx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sr8-jz-C6z" customClass="GMGridView">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="GDF-L3-BAn" id="2Zs-Ac-RuW"/>
+                            <outlet property="delegate" destination="GDF-L3-BAn" id="Ssd-tE-rmE"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4ea-R7-C4s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1126" y="1936"/>
         </scene>
         <!--Дерево кратчайших путей-->
         <scene sceneID="cT3-DW-nxi">

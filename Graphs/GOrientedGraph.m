@@ -60,4 +60,36 @@
     return graph;
 }
 
+- (NSArray *)floyd
+{
+    NSMutableArray *result = [NSMutableArray array];
+    for (int i = 0; i < [self.vertexes count]; i++)
+    {
+        [result addObject:[NSMutableArray array]];
+        for (int j = 0; j < [self.vertexes count]; j++)
+        {
+            result[i][j] = @100000;
+        }
+    }
+    
+    for (GEdge *edge in self.edges)
+    {
+        result[[self.vertexes indexOfObject:edge.v1]][[self.vertexes indexOfObject:edge.v2]] = edge.weight;
+    }
+    
+    for (int i = 0; i < [self.vertexes count]; i++)
+    {
+        for (int j = 0; j < [self.vertexes count]; j++)
+        {
+            for (int k = 0; k < [self.vertexes count]; k++)
+            {
+                result[i][j] = [NSNumber numberWithDouble:MIN([result[i][j] doubleValue], [result[i][k] doubleValue] + [result[k][j] doubleValue])];
+            }
+        }
+    }
+    
+    return result;
+}
+
 @end
+

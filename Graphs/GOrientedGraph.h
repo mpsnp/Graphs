@@ -11,6 +11,7 @@
 @interface GOrientedGraph : GGraph
 
 - (GOrientedGraph *)minimalPathTreeStartingFromVertex:(GVertex *)start;
+- (NSArray *)floyd;
 
 + (GOrientedGraph *)orientedGraphWithGraph:(GGraph *)graph;
 
