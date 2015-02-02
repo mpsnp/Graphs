@@ -4,3 +4,4 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 pod 'GMGridView', '~> 1.1'
+pod 'WEPopover', '~> 1.0'

@@ -11,6 +11,7 @@
 @interface GOrientedGraph : GGraph
 
 - (GOrientedGraph *)minimalPathTreeStartingFromVertex:(GVertex *)start;
+- (void)findMaxFlowFrom:(GVertex *)s to:(GVertex *)t;
 - (NSArray *)floyd;
 
 + (GOrientedGraph *)orientedGraphWithGraph:(GGraph *)graph;

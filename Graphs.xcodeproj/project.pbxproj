@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E3A54401A7ECC8100930602 /* GMaxFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A543F1A7ECC8100930602 /* GMaxFlowViewController.m */; };
 		5E502E6C1A5EC6DB00C89ACE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E502E6B1A5EC6DB00C89ACE /* main.m */; };
 		5E502E6F1A5EC6DB00C89ACE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E502E6E1A5EC6DB00C89ACE /* AppDelegate.m */; };
 		5E502E721A5EC6DB00C89ACE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E502E711A5EC6DB00C89ACE /* ViewController.m */; };
@@ -24,6 +25,7 @@
 		5E502EA81A5F314900C89ACE /* GOrientedGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E502EA71A5F314900C89ACE /* GOrientedGraph.m */; };
 		5E502EAC1A5F378900C89ACE /* GDjikstraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E502EAB1A5F378900C89ACE /* GDjikstraViewController.m */; };
 		5E69D4BD1A5F58C100EBCBA2 /* GFloydViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E69D4BC1A5F58C100EBCBA2 /* GFloydViewController.m */; };
+		5EF75BCB1A7E7F41003B96D7 /* GEdgeEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EF75BCA1A7E7F41003B96D7 /* GEdgeEditViewController.m */; };
 		8E1A3B4DD8327F858159D8ED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A46588903348361500D0C0B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		5A46588903348361500D0C0B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E3A543E1A7ECC8100930602 /* GMaxFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMaxFlowViewController.h; sourceTree = "<group>"; };
+		5E3A543F1A7ECC8100930602 /* GMaxFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMaxFlowViewController.m; sourceTree = "<group>"; };
 		5E502E661A5EC6DB00C89ACE /* Graphs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Graphs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E502E6A1A5EC6DB00C89ACE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E502E6B1A5EC6DB00C89ACE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 		5E502EAB1A5F378900C89ACE /* GDjikstraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDjikstraViewController.m; sourceTree = "<group>"; };
 		5E69D4BB1A5F58C100EBCBA2 /* GFloydViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFloydViewController.h; sourceTree = "<group>"; };
 		5E69D4BC1A5F58C100EBCBA2 /* GFloydViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFloydViewController.m; sourceTree = "<group>"; };
+		5EF75BC91A7E7F41003B96D7 /* GEdgeEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEdgeEditViewController.h; sourceTree = "<group>"; };
+		5EF75BCA1A7E7F41003B96D7 /* GEdgeEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEdgeEditViewController.m; sourceTree = "<group>"; };
 		8F240637BD2C31A276C1F7B9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DC1708F770B721A12BC1D805 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -225,6 +231,10 @@
 				5E502EAB1A5F378900C89ACE /* GDjikstraViewController.m */,
 				5E69D4BB1A5F58C100EBCBA2 /* GFloydViewController.h */,
 				5E69D4BC1A5F58C100EBCBA2 /* GFloydViewController.m */,
+				5EF75BC91A7E7F41003B96D7 /* GEdgeEditViewController.h */,
+				5EF75BCA1A7E7F41003B96D7 /* GEdgeEditViewController.m */,
+				5E3A543E1A7ECC8100930602 /* GMaxFlowViewController.h */,
+				5E3A543F1A7ECC8100930602 /* GMaxFlowViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -369,12 +379,14 @@
 				5E502E981A5EC9AB00C89ACE /* GEdge.m in Sources */,
 				5E502EA01A5ECE4200C89ACE /* UIBezierPath+Image.m in Sources */,
 				5E502E921A5EC97A00C89ACE /* GGraph.m in Sources */,
+				5E3A54401A7ECC8100930602 /* GMaxFlowViewController.m in Sources */,
 				5E502E721A5EC6DB00C89ACE /* ViewController.m in Sources */,
 				5E502E6F1A5EC6DB00C89ACE /* AppDelegate.m in Sources */,
 				5E502E951A5EC99C00C89ACE /* GVertex.m in Sources */,
 				5E502EAC1A5F378900C89ACE /* GDjikstraViewController.m in Sources */,
 				5E502E6C1A5EC6DB00C89ACE /* main.m in Sources */,
 				5E502EA81A5F314900C89ACE /* GOrientedGraph.m in Sources */,
+				5EF75BCB1A7E7F41003B96D7 /* GEdgeEditViewController.m in Sources */,
 				5E502E9C1A5ECB6D00C89ACE /* GGraphView.m in Sources */,
 				5E69D4BD1A5F58C100EBCBA2 /* GFloydViewController.m in Sources */,
 			);

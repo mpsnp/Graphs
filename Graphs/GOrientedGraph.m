@@ -53,11 +53,96 @@
     {
         if ([edge.v2.weight doubleValue] == [edge.weight doubleValue] + [edge.v1.weight doubleValue])
         {
-            [graph addEdge:[edge copy]];
+            [graph addEdge:edge];
         }
     }
     
     return graph;
+}
+
+- (NSArray *)findIncreasingPathFrom:(GVertex *)s to:(GVertex *)t
+{
+    GOrientedGraph *tree = [GOrientedGraph new];
+    tree.vertexes = self.vertexes;
+    
+    NSMutableSet *visited = [NSMutableSet setWithObject:s];
+    NSMutableSet *notVisited = [NSMutableSet setWithArray:self.vertexes];
+    [notVisited removeObject:s];
+    
+    NSMutableArray *result = [NSMutableArray new];
+    
+    GVertex *current = s;
+    
+    while ([notVisited count] > 0 && current != t)
+    {
+        GEdge *newEdge = nil;
+        for (GEdge *edge in self.edges)
+        {
+            GVertex *neighbor = [edge neighborVertex:current];
+            if (neighbor && [edge flowDifferenceFromVertex:current] > 0 && [notVisited containsObject:neighbor])
+            {
+                [visited addObject:neighbor];
+                [notVisited removeObject:neighbor];
+                newEdge = edge;
+                [result addObject:edge];
+                break;
+            }
+        }
+        if (newEdge)
+            current = [newEdge neighborVertex:current];
+        else
+        {
+            if ([result count] == 0)
+                break;
+            newEdge = [result lastObject];
+            current = [newEdge neighborVertex:current];
+            [result removeLastObject];
+        }
+    }
+    
+    if (current != t)
+        [result removeAllObjects];
+    
+    return result;
+}
+
+- (NSNumber *)findMaxIncreaseOfPath:(NSArray *)path withStart:(GVertex *)s
+{
+    double result = INFINITY;
+    
+    GVertex *current = s;
+    
+    for (GEdge *edge in path)
+    {
+        if (result > [edge flowDifferenceFromVertex:current])
+        {
+            result = [edge flowDifferenceFromVertex:current];
+        }
+        current = [edge neighborVertex:current];
+    }
+    
+    return [NSNumber numberWithDouble:result];
+}
+
+- (void)findMaxFlowFrom:(GVertex *)s to:(GVertex *)t
+{
+    for (GEdge *edge in self.edges)
+    {
+        edge.flow = nil;
+    }
+    
+    NSArray *increasingPath = [self findIncreasingPathFrom:s to:t];
+    while ([increasingPath count] > 0)
+    {
+        NSNumber *dIncrease = [self findMaxIncreaseOfPath:increasingPath withStart:s];
+        GVertex *currentVertex = s;
+        for (GEdge *edge in increasingPath)
+        {
+            [edge addFlow:dIncrease fromVertex:currentVertex];
+            currentVertex = [edge neighborVertex:currentVertex];
+        }
+        increasingPath = [self findIncreasingPathFrom:s to:t];
+    }
 }
 
 - (NSArray *)floyd

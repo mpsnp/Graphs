@@ -13,6 +13,7 @@
 @property (nonatomic) CGPoint position;
 @property (nonatomic) NSNumber *weight;
 @property (nonatomic) NSString *name;
+@property (nonatomic) UIColor *color;
 
 + (instancetype)vertexAtPosition:(CGPoint)position;
 @end

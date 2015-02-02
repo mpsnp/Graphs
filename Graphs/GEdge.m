@@ -26,4 +26,26 @@
     return newEdge;
 }
 
+- (GVertex *)neighborVertex:(GVertex *)v
+{
+    if (v == self.v1)
+        return self.v2;
+    if (v == self.v2)
+        return self.v1;
+    return nil;
+}
+
+- (double)flowDifferenceFromVertex:(GVertex *)vertex
+{
+    return ((vertex == self.v1) ? [self.weight doubleValue] : 0) - [self.flow doubleValue];
+}
+
+- (void)addFlow:(NSNumber *)flow fromVertex:(GVertex *)vertex
+{
+    if (vertex == self.v1)
+        self.flow = [NSNumber numberWithDouble:[self.flow doubleValue] + [flow doubleValue]];
+    else
+        self.flow = [NSNumber numberWithDouble:[self.flow doubleValue] - [flow doubleValue]];
+}
+
 @end

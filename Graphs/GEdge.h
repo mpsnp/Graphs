@@ -13,9 +13,13 @@
 
 @interface GEdge : NSObject
 @property (nonatomic) NSNumber *weight;
+@property (nonatomic) NSNumber *flow;
 @property (nonatomic) UIColor *color;
 @property (nonatomic, weak) GVertex *v1;
 @property (nonatomic, weak) GVertex *v2;
 
 + (instancetype)edgeWithVertex:(GVertex *)v1 andVertex:(GVertex *)v2;
+- (void)addFlow:(NSNumber *)flow fromVertex:(GVertex *)vertex;
+- (GVertex *)neighborVertex:(GVertex *)v;
+- (double)flowDifferenceFromVertex:(GVertex *)vertex;
 @end

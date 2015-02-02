@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0Lj-b4-BaV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0Lj-b4-BaV">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -67,6 +67,23 @@
                                             <segue destination="GDF-L3-BAn" kind="show" id="enf-Ei-KYJ"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="OJH-Lh-qv9" style="IBUITableViewCellStyleDefault" id="SnB-Bx-JTx">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SnB-Bx-JTx" id="gIb-JH-wXj">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Максимальный поток" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OJH-Lh-qv9">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="4Th-Jc-mug" kind="show" id="4K7-tp-sIa"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -93,7 +110,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Cp2-Uz-fkq" customClass="GGraphView">
+                            <view userInteractionEnabled="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Cp2-Uz-fkq" customClass="GGraphView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -124,6 +141,10 @@
                                 <real key="value" value="10"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="changing:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="1Y3-bh-lyo"/>
+                            <action selector="topGraphChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="51J-Jz-l98"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="1Vr-8u-XLv">
                         <nil key="title"/>
@@ -138,14 +159,43 @@
                                 <action selector="switchType:" destination="BYZ-38-t0r" eventType="valueChanged" id="efc-c4-v5s"/>
                             </connections>
                         </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="gds-ye-2s5"/>
                     </navigationItem>
                     <connections>
                         <outlet property="spanningTreeView" destination="Cp2-Uz-fkq" id="QHC-sC-kU0"/>
+                        <outlet property="treeType" destination="Udq-i7-Emt" id="j0x-zl-ve7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1116" y="462"/>
+        </scene>
+        <!--Максимальный поток-->
+        <scene sceneID="62Q-o5-eBf">
+            <objects>
+                <viewController id="4Th-Jc-mug" customClass="GMaxFlowViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fEQ-za-Sae"/>
+                        <viewControllerLayoutGuide type="bottom" id="1od-pa-1Xr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="redraw" id="S5j-Ay-GHo" customClass="GGraphView">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="pointSize">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="changing:" destination="4Th-Jc-mug" eventType="editingDidBegin" id="aPr-NV-rJB"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="Максимальный поток" id="hgb-Sm-qRB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rRM-Ku-1TQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="425" y="1936"/>
         </scene>
         <!--Floyd View Controller-->
         <scene sceneID="nfU-Sl-cI5">
@@ -164,6 +214,8 @@
                             <outlet property="delegate" destination="GDF-L3-BAn" id="Ssd-tE-rmE"/>
                         </connections>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ea-R7-C4s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -181,7 +233,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Y8i-dZ-kWR" customClass="GGraphView">
+                            <view userInteractionEnabled="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Y8i-dZ-kWR" customClass="GGraphView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -196,6 +248,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="changing:" destination="0Cb-eS-oWU" eventType="editingDidBegin" id="eA6-JZ-pQF"/>
                                     <action selector="topGraphChanged:" destination="0Cb-eS-oWU" eventType="valueChanged" id="nwr-Wy-M5n"/>
                                 </connections>
                             </view>
@@ -212,8 +265,14 @@
                                 <real key="value" value="10"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="changing:" destination="0Cb-eS-oWU" eventType="editingDidBegin" id="92h-UY-gxE"/>
+                            <action selector="topGraphChanged:" destination="0Cb-eS-oWU" eventType="valueChanged" id="Nis-dQ-Imc"/>
+                        </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Дерево кратчайших путей" id="dbh-7T-24j"/>
+                    <navigationItem key="navigationItem" title="Дерево кратчайших путей" id="dbh-7T-24j">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="cXC-zL-Ctl"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="minimalGraphView" destination="Y8i-dZ-kWR" id="P40-Zs-6iD"/>
                     </connections>
@@ -221,6 +280,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k4H-Hi-IeU" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1126" y="1214"/>
+        </scene>
+        <!--Edge Edit View Controller-->
+        <scene sceneID="jeT-R4-Jcc">
+            <objects>
+                <viewController storyboardIdentifier="PopOver" id="3Tb-2Q-zMT" customClass="GEdgeEditViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3ZF-S7-5Vh"/>
+                        <viewControllerLayoutGuide type="bottom" id="2vm-QO-YgF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JKu-iy-wLx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cw3-Sj-eLh">
+                                <rect key="frame" x="16" y="285" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation"/>
+                                <connections>
+                                    <action selector="symbolEntered:" destination="3Tb-2Q-zMT" eventType="editingChanged" id="rx2-Z2-6de"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="cw3-Sj-eLh" secondAttribute="centerY" id="IsB-0H-WIr"/>
+                            <constraint firstItem="cw3-Sj-eLh" firstAttribute="leading" secondItem="JKu-iy-wLx" secondAttribute="leadingMargin" id="jtQ-DM-Q34"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cw3-Sj-eLh" secondAttribute="trailing" id="rfB-ie-LVV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="weightField" destination="cw3-Sj-eLh" id="Ak1-oZ-ndD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lVT-s8-rHN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1826" y="925"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="d2Z-hD-P0E">

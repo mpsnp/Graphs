@@ -13,6 +13,9 @@
 #import "GEdge.h"
 #import "UIBezierPath+Image.h"
 
+@interface GGraphView ()
+@end
+
 @implementation GGraphView
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -34,9 +37,67 @@
     return self;
 }
 
+- (double)distanceFromPoint:(CGPoint)point toEdge:(GEdge *)edge
+{
+    CGPoint ePoint = CGPointMake((edge.v1.position.x + edge.v2.position.x) / 2,
+                                 (edge.v1.position.y + edge.v2.position.y) / 2);
+    
+    return [self doubleNorm:[self subFrom:ePoint p2:point]];
+}
+
 - (IBAction)tap:(UITapGestureRecognizer *)sender
 {
-//    self.grap
+    if (sender.state == UIGestureRecognizerStateRecognized)
+    {
+        CGPoint tapPoint = [self toNormalizedCoord:[sender locationInView:self]];
+        GEdge *edge = [self.graph.edges firstObject];
+        double edgeMinDistance = [self distanceFromPoint:tapPoint toEdge:edge];
+        if (edge)
+        {
+            for (GEdge *e in self.graph.edges)
+            {
+                double newDistance = [self distanceFromPoint:tapPoint toEdge:e];
+                if (newDistance < edgeMinDistance)
+                {
+                    edgeMinDistance = newDistance;
+                    edge = e;
+                }
+            }
+            
+            self.selectedEdge = edge;
+        }
+        
+        GVertex *vertex = [self.graph.vertexes firstObject];
+        double vertexMinDistance = [self doubleNorm:[self subFrom:tapPoint p2:vertex.position]];
+        
+        for (GVertex *v in self.graph.vertexes)
+        {
+            double distance = [self doubleNorm:[self subFrom:tapPoint p2:v.position]];
+            if (distance < vertexMinDistance)
+            {
+                vertexMinDistance = distance;
+                vertex = v;
+            }
+        }
+        
+        self.selectedVertex = vertex;
+        
+        if (vertexMinDistance < edgeMinDistance)
+            self.selectionType = GGraphSelectionVertex;
+        else
+            self.selectionType = GGraphSelectionEdge;
+        
+        
+        [self sendActionsForControlEvents:UIControlEventEditingDidBegin];
+    }
+}
+
+- (CGRect)rectForEdge:(GEdge *)edge
+{
+    CGPoint ePoint = CGPointMake((edge.v1.position.x + edge.v2.position.x) / 2,
+                                 (edge.v1.position.y + edge.v2.position.y) / 2);
+    ePoint = [self fromNormalizedCoord:ePoint];
+    return CGRectMake(ePoint.x, ePoint.y, 1, 1);
 }
 
 - (CGPoint)fromNormalizedCoord:(CGPoint)point
@@ -113,7 +174,7 @@
         for (GEdge *edge in self.graph.edges)
         {
             UIBezierPath *path = [UIBezierPath bezierPath];
-            [path setLineWidth:self.lineWidth];
+            [path setLineWidth:self.lineWidth + [edge.flow doubleValue]];
             [path moveToPoint:[self fromNormalizedCoord:edge.v1.position]];
             [path addLineToPoint:[self fromNormalizedCoord:edge.v2.position]];
             [edge.color ? edge.color : self.lineColor setStroke];
@@ -129,18 +190,22 @@
                 [path addLineToPoint:[self add:[self fromNormalizedCoord:edge.v2.position] to:arrowVector]];
                 [path setLineCapStyle:kCGLineCapRound];
                 [self.lineColor setStroke];
-                [path setLineWidth:self.lineWidth * 2.5];
+                [path setLineWidth:self.lineWidth * 2.5 + [edge.flow doubleValue]];
                 [path stroke];
             }
             
             CGPoint textOrigin = [self add:[self fromNormalizedCoord:edge.v1.position] to:[self fromNormalizedCoord:edge.v2.position]];
             textOrigin = CGPointMake(textOrigin.x * 0.5, textOrigin.y * 0.5);
-            path = [UIBezierPath bezierPathWithArcCenter:textOrigin radius:self.pointSize * 0.8 startAngle:0 endAngle:M_PI * 2 clockwise:YES];
+            path = [UIBezierPath bezierPathWithArcCenter:textOrigin radius:self.pointSize startAngle:0 endAngle:M_PI * 2 clockwise:YES];
             [path setLineWidth:self.lineWidth];
             [self.fillColor setFill];
             [path fill];
             
-            NSAttributedString *weight = [[NSAttributedString alloc] initWithString:[edge.weight stringValue] attributes:@{NSFontAttributeName: [UIFont fontWithName:nil size:10], NSForegroundColorAttributeName: edge.color ? edge.color : self.lineColor}];
+            NSString *edgeCaption = [edge.weight stringValue];
+            if (edge.flow)
+                edgeCaption = [NSString stringWithFormat:@"%@/%@", [edge.flow stringValue], edgeCaption];
+            
+            NSAttributedString *weight = [[NSAttributedString alloc] initWithString:edgeCaption attributes:@{NSFontAttributeName: [UIFont fontWithName:nil size:10], NSForegroundColorAttributeName: edge.color ? edge.color : self.lineColor}];
             CGPoint origin = CGPointMake(path.bounds.origin.x + path.bounds.size.width * 0.5 - weight.size.width * 0.5,
                                          path.bounds.origin.y + path.bounds.size.height * 0.5 - weight.size.height * 0.5);
             [weight drawAtPoint:origin];
@@ -149,7 +214,7 @@
         for (GVertex *vertex in self.graph.vertexes)
         {
             UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:[self fromNormalizedCoord:vertex.position] radius:self.pointSize startAngle:0 endAngle:M_PI * 2 clockwise:YES];
-            [self.fillColor setFill];
+            [(vertex.color) ? vertex.color : self.fillColor setFill];
             [path fill];
             [self.lineColor setStroke];
             [path stroke];

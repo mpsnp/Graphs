@@ -63,8 +63,7 @@
         }
         if ([selectedSets count] == 2)
         {
-            GEdge *edgeForAdd = [edge copy];
-            [result addEdge:edgeForAdd];
+            [result addEdge:edge];
             NSArray *sets = [selectedSets allObjects];
             NSMutableSet *firstSet = [sets objectAtIndex:0];
             NSMutableSet *secondSet = [sets objectAtIndex:1];
