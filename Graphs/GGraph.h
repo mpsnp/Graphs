@@ -13,10 +13,13 @@
 @interface GGraph : NSObject
 @property (nonatomic, strong) NSMutableArray *vertexes;
 @property (nonatomic, strong) NSMutableArray *edges;
+@property (nonatomic, strong) id info;
 
 - (void)addVertex:(GVertex *)vertex;
 - (void)addEdge:(GEdge *)edge;
 - (GGraph *)spanningTreeMinimal:(BOOL)minimal;
+- (NSArray *)findLeafs;
+- (void)layoutTree;
 
 + (GGraph *)graphWithData:(NSData *)data;
 @end

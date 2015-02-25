@@ -15,6 +15,7 @@
     GEdge *edge = [GEdge new];
     edge.v1 = v1;
     edge.v2 = v2;
+    edge.weight = @0;
     return edge;
 }
 

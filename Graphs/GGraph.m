@@ -34,6 +34,60 @@
     [self.edges addObject:edge];
 }
 
+- (void)layoutSplice:(NSArray *)vertexes onLine:(CGSize)line
+{
+    	
+}
+
+- (void)layoutTree
+{
+    
+}
+
+- (NSArray *)findLeafs
+{
+    NSMutableSet *leafs = [NSMutableSet set];
+    NSMutableSet *notLeafs = [NSMutableSet set];
+    
+    for (GEdge *edge in self.edges)
+    {
+        if (![notLeafs containsObject:edge.v1])
+        {
+            if ([leafs containsObject:edge.v1])
+            {
+                [notLeafs addObject:edge.v1];
+                [leafs removeObject:edge.v1];
+            }
+            else
+            {
+                [leafs addObject:edge.v1];
+            }
+        }
+        if (![notLeafs containsObject:edge.v2])
+        {
+            if ([leafs containsObject:edge.v2])
+            {
+                [notLeafs addObject:edge.v2];
+                [leafs removeObject:edge.v2];
+            }
+            else
+            {
+                [leafs addObject:edge.v2];
+            }
+        }
+    }
+    
+    for (GVertex *vertex in self.vertexes)
+    {
+        if (![notLeafs containsObject:vertex])
+        {
+            [leafs addObject:vertex];
+        }
+    }
+    
+    return [leafs allObjects];
+}
+
 - (GGraph *)spanningTreeMinimal:(BOOL)minimal
 {
     GGraph *result = [GGraph new];

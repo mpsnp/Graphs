@@ -17,6 +17,7 @@
 @property (nonatomic) UIColor *color;
 @property (nonatomic, weak) GVertex *v1;
 @property (nonatomic, weak) GVertex *v2;
+@property (nonatomic) id payload;
 
 + (instancetype)edgeWithVertex:(GVertex *)v1 andVertex:(GVertex *)v2;
 - (void)addFlow:(NSNumber *)flow fromVertex:(GVertex *)vertex;

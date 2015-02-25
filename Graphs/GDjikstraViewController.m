@@ -42,6 +42,7 @@
 {
     GEdgeEditViewController *editor = [self.storyboard instantiateViewControllerWithIdentifier:@"PopOver"];
     editor.edgeForEdit = sender.selectedEdge;
+    
     if (editor)
     {
         self.popOver = [[WEPopoverController alloc] initWithContentViewController:editor];
